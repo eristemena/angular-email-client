@@ -1,1 +1,24 @@
-<p>input works!</p>
+<label class="block font-bold">{{ label }}</label>
+<input
+  [type]="type"
+  [formControl]="control"
+  class="border border-gray-300 rounded-md p-1 w-full"
+  [ngClass]="{ 'border-red-500': (control.touched || control.dirty) && control.errors }"
+/>
+<ng-container *ngIf="(control.touched || control.dirty) && control.errors">
+  <p class="text-red-700 text-xs mt-1" *ngIf="control.errors.required">
+    Value is required
+  </p>
+  <p class="text-red-700 text-xs mt-1" *ngIf="control.errors.minlength">
+    Min length required {{ control.errors.minlength.requiredLength }}
+  </p>
+  <p class="text-red-700 text-xs mt-1" *ngIf="control.errors.maxlength">
+    Max length allowed {{ control.errors.maxlength.requiredLength }}
+  </p>
+  <p class="text-red-700 text-xs mt-1" *ngIf="control.errors.nonUniqueUsername">
+    Username is not available
+  </p>
+  <p class="text-red-700 text-xs mt-1" *ngIf="control.errors.noConnection">
+    Can't tell if username is taken
+  </p>
+</ng-container>
