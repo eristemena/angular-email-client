@@ -19,6 +19,23 @@
       type="password"
     ></app-input>
   </div>
+  <div
+    class="mb-2"
+    *ngIf="
+      (getFormControl('password').touched ||
+        getFormControl('password').dirty) &&
+      (getFormControl('confirmPassword').touched ||
+        getFormControl('confirmPassword').dirty) &&
+      signupForm.errors
+    "
+  >
+    <p
+      class="text-red-700 text-xs mt-1"
+      *ngIf="signupForm.errors.passwordsDontMatch"
+    >
+      Password don't match
+    </p>
+  </div>
   <button
     type="submit"
     class="

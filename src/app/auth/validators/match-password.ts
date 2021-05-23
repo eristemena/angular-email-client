@@ -12,6 +12,6 @@ export class MatchPassword implements Validator {
       return null;
     }
 
-    return { passwordDontMatch: true };
+    return { passwordsDontMatch: true };
   }
 }
